@@ -1,0 +1,31 @@
+This repository is for EE 660 final project
+
+optdigits.tra and optdigits.tes are the original database
+
+Preporcessing.m is the MALTAB code to preporcessing the data for SVM
+
+command line to apply different kernels in LIBSVM
+
+./svm-scale -l -1 -u 1 -s range1 trndata > trndata.scale
+./svm-scale -r range1 tstdata > tstdata.scale
+./svm-train trndata.scale
+./svm-predict tstdata.scale trndata.scale.model tst.predict
+
+Accuracy = 96.9393% (1742/1797) (classification)
+
+python grid.py trndata.scale
+[local] 13 -15 98.2213 (best c=32.0, g=0.03125, rate=99.0845)
+[local] 13 3 10.7769 (best c=32.0, g=0.03125, rate=99.0845)
+[local] 13 -9 98.3782 (best c=32.0, g=0.03125, rate=99.0845)
+[local] 13 -3 98.9799 (best c=32.0, g=0.03125, rate=99.0845)
+32.0 0.03125 99.0845
+
+./svm-train -c 32 -g 0.03125 trndata.scale
+./svm-predict tstdata.scale trndata.scale.model tst.predict
+Accuracy = 98.2749% (1766/1797) (classification)
+
+
+Linear Kernel
+Accuracy = 95.9933% (1725/1797) (classification)
+Polynomial Kernel (degree=3)
+Accuracy = 97.2176% (1747/1797) (classification)
